@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b99ae8">
+
+<title>For Bachaa ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================================================
+   RIYA SPECIAL ADDITIONS
+   ========================================================= */
+
+.secret-screen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:
+      radial-gradient(circle at 50% 30%,rgba(185,154,232,.20),transparent 35%),
+      #08060c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+    transition:1s ease;
+}
+
+.secret-screen.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+.secret-box{
+    width:min(500px,100%);
+    padding:45px 28px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    background:rgba(255,255,255,.045);
+    backdrop-filter:blur(25px);
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+}
+
+.secret-symbol{
+    font-size:55px;
+    color:#b99ae8;
+    margin-bottom:15px;
+    animation:secretGlow 2s infinite alternate;
+}
+
+@keyframes secretGlow{
+    from{filter:drop-shadow(0 0 5px #b99ae8)}
+    to{filter:drop-shadow(0 0 30px #b99ae8)}
+}
+
+.secret-box h1{
+    font-size:55px;
+    margin:10px 0;
+}
+
+.secret-box p{
+    color:#aaa0b2;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.secret-input{
+    width:100%;
+    margin:20px 0 10px;
+    padding:15px 18px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(0,0,0,.25);
+    color:white;
+    outline:none;
+    text-align:center;
+}
+
+.secret-input:focus{
+    border-color:#b99ae8;
+    box-shadow:0 0 20px rgba(185,154,232,.15);
+}
+
+.secret-error{
+    height:20px;
+    color:#dca8d9;
+    font-size:12px;
+}
+
+/* Secret content starts hidden */
+#realWebsite{
+    display:none;
+}
+
+#realWebsite.unlocked{
+    display:block;
+}
+
+/* Birthday counter */
+
+.birthday-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 15px;
+    border-radius:50px;
+    border:1px solid rgba(185,154,232,.3);
+    background:rgba(185,154,232,.07);
+    color:#d9c8ed;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:20px;
+}
+
+/* Story */
+
+.story-path{
+    width:min(900px,100%);
+    margin:auto;
+    position:relative;
+}
+
+.story-path:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(
+        transparent,
+        #b99ae8,
+        #8060b8,
+        transparent
+    );
+}
+
+.story-event{
+    width:45%;
+    padding:28px;
+    margin:80px 0;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.035);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    position:relative;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.story-event:nth-child(even){
+    margin-left:55%;
+}
+
+.story-event .date{
+    color:#b99ae8;
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.story-event h3{
+    font-size:34px;
+    margin:10px 0;
+}
+
+.story-event p{
+    color:#aaa1ae;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.story-heart{
+    position:absolute;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#15101b;
+    border:1px solid #b99ae8;
+    color:#b99ae8;
+    top:30px;
+    right:-70px;
+}
+
+.story-event:nth-child(even) .story-heart{
+    left:-70px;
+}
+
+/* Photo wall */
+
+.photo-wall{
+    width:min(1100px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:24px;
+}
+
+.photo-card{
+    background:#f7eff8;
+    padding:12px;
+    color:#302936;
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+    transition:.45s;
+}
+
+.photo-card:hover{
+    transform:translateY(-10px) rotate(0deg)!important;
+    box-shadow:0 35px 80px rgba(0,0,0,.45);
+}
+
+.photo-card img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.photo-image{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(135deg,#cbb0e9,#77539c);
+}
+
+.photo-image span{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    color:rgba(255,255,255,.65);
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.photo-caption{
+    font-family:"Parisienne",cursive;
+    text-align:center;
+    font-size:19px;
+    padding:12px 3px 3px;
+}
+
+/* Different frame sizes */
+
+.photo-1{
+    grid-column:1/5;
+    aspect-ratio:4/5;
+    transform:rotate(-4deg);
+}
+
+.photo-2{
+    grid-column:5/10;
+    aspect-ratio:1;
+    transform:rotate(3deg);
+    margin-top:40px;
+}
+
+.photo-3{
+    grid-column:10/13;
+    aspect-ratio:3/4;
+    transform:rotate(-5deg);
+}
+
+.photo-4{
+    grid-column:2/7;
+    aspect-ratio:16/10;
+    transform:rotate(2deg);
+}
+
+.photo-5{
+    grid-column:7/12;
+    aspect-ratio:4/5;
+    transform:rotate(-3deg);
+    margin-top:30px;
+}
+
+.photo-6{
+    grid-column:1/5;
+    aspect-ratio:1;
+    transform:rotate(4deg);
+}
+
+.photo-7{
+    grid-column:5/9;
+    aspect-ratio:4/5;
+    transform:rotate(-2deg);
+}
+
+.photo-8{
+    grid-column:9/13;
+    aspect-ratio:1;
+    transform:rotate(5deg);
+}
+
+.photo-9{
+    grid-column:3/11;
+    aspect-ratio:16/8;
+    transform:rotate(-1deg);
+}
+
+.photo-10{
+    grid-column:1/4;
+    aspect-ratio:3/4;
+    transform:rotate(-5deg);
+}
+
+.photo-11{
+    grid-column:4/9;
+    aspect-ratio:1;
+    transform:rotate(3deg);
+}
+
+.photo-12{
+    grid-column:9/13;
+    aspect-ratio:3/4;
+    transform:rotate(-4deg);
+}
+
+.photo-13{
+    grid-column:2/6;
+    aspect-ratio:4/5;
+    transform:rotate(4deg);
+}
+
+.photo-14{
+    grid-column:6/11;
+    aspect-ratio:16/9;
+    transform:rotate(-2deg);
+}
+
+.photo-15{
+    grid-column:3/10;
+    aspect-ratio:1.8;
+    transform:rotate(1deg);
+}
+
+.photo-16{
+    grid-column:1/5;
+    aspect-ratio:1;
+    transform:rotate(-4deg);
+}
+
+.photo-17{
+    grid-column:5/9;
+    aspect-ratio:4/5;
+    transform:rotate(2deg);
+}
+
+.photo-18{
+    grid-column:9/13;
+    aspect-ratio:1;
+    transform:rotate(-3deg);
+}
+
+/* Favourite things */
+
+.favourite-world{
+    width:min(1000px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.favourite{
+    min-height:200px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:end;
+    transition:.4s;
+}
+
+.favourite:hover{
+    transform:translateY(-10px) scale(1.02);
+    border-color:rgba(185,154,232,.5);
+}
+
+.favourite-icon{
+    font-size:42px;
+    margin-bottom:auto;
+}
+
+.favourite h3{
+    font-size:30px;
+    margin:10px 0 2px;
+}
+
+.favourite small{
+    color:#95899b;
+}
+
+/* Private video */
+
+.private-box{
+    width:min(900px,100%);
+    margin:auto;
+    padding:10px;
+    border:1px solid rgba(185,154,232,.3);
+    border-radius:25px;
+    background:linear-gradient(
+      135deg,
+      rgba(185,154,232,.1),
+      rgba(255,255,255,.025)
+    );
+    box-shadow:0 30px 100px rgba(0,0,0,.35);
+}
+
+.private-box video{
+    width:100%;
+    display:block;
+    border-radius:17px;
+    background:#050407;
+}
+
+/* Secret message */
+
+.secret-note{
+    max-width:650px;
+    margin:50px auto 0;
+    text-align:center;
+    color:#9f94a6;
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* Mobile */
+
+@media(max-width:750px){
+
+    .story-path:before{
+        left:15px;
+    }
+
+    .story-event,
+    .story-event:nth-child(even){
+        width:calc(100% - 40px);
+        margin:60px 0 60px 40px;
+    }
+
+    .story-heart,
+    .story-event:nth-child(even) .story-heart{
+        left:-45px;
+        right:auto;
+    }
+
+    .photo-wall{
+        grid-template-columns:1fr 1fr;
+        gap:15px;
+    }
+
+    .photo-card,
+    .photo-card:nth-child(n){
+        grid-column:auto;
+        margin-top:0;
+        transform:rotate(0);
+    }
+
+    .photo-9,
+    .photo-15{
+        grid-column:1/-1;
+    }
+
+    .favourite-world{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:470px){
+
+    .favourite-world{
+        grid-template-columns:1fr;
+    }
+
+    .secret-box h1{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     SECRET ENTRY
+     ========================================================= -->
+
+<div id="secretScreen" class="secret-screen">
+
+    <div class="secret-box">
+
+        <div class="secret-symbol">✦</div>
+
+        <span class="eyebrow">
+            A LITTLE UNIVERSE FOR ONE PERSON
+        </span>
+
+        <h1>For Bachaa</h1>
+
+        <p>
+            This little universe isn't for everyone.
+            <br>
+            There's one question only you should know.
+        </p>
+
+        <p>
+            <strong>What's our anniversary??</strong>
+        </p>
+
+        <input
+            id="secretInput"
+            class="secret-input"
+            type="text"
+            placeholder="Enter the date..."
+            autocomplete="off"
+        >
+
+        <button id="unlockBtn" class="primary-btn">
+            Enter my universe ♡
+        </button>
+
+        <div id="secretError" class="secret-error"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     REAL WEBSITE
+     ========================================================= -->
+
+<div id="realWebsite">
+
+<canvas id="stars"></canvas>
+
+<div class="grain"></div>
+
+<div class="cursor-glow"></div>
+
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop preload="auto">
+
+    <source
+        src="assets/music/song.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+<button
+    id="musicBtn"
+    class="floating-btn"
+    aria-label="Music"
+>
+    ♫
+</button>
+
+<button
+    id="menuBtn"
+    class="floating-btn menu-btn"
+    aria-label="Menu"
+>
+    ☰
+</button>
+
+
+<!-- NAVIGATION -->
+
+<nav id="sideNav">
+
+    <button data-target="home">
+        01 · HOME
+    </button>
+
+    <button data-target="story">
+        02 · OUR STORY
+    </button>
+
+    <button data-target="memories">
+        03 · MEMORIES
+    </button>
+
+    <button data-target="favorites">
+        04 · HER WORLD
+    </button>
+
+    <button data-target="letter">
+        05 · MY LETTER
+    </button>
+
+    <button data-target="video">
+        06 · PRIVATE
+    </button>
+
+    <button data-target="finale">
+        07 · MAKE A WISH
+    </button>
+
+</nav>
+
+
+<main>
+
+
+<!-- =========================================================
+     PAGE 01 — HOME
+     ========================================================= -->
+
+<section id="home" class="hero section">
+
+    <div class="hero-orbit orbit-one"></div>
+
+    <div class="hero-orbit orbit-two"></div>
+
+    <div class="hero-content reveal">
+
+        <span class="eyebrow">
+            14 · 08 · 2006 — 8:30 AM
+        </span>
+
+        <h1>
+            Happy Birthday,<br>
+            <em>Bachaa.</em>
+        </h1>
+
+        <p class="hero-sub">
+
+            Riya, my favourite person.
+            <br>
+
+            I made a tiny universe for you
+            because a normal birthday wish
+            didn't feel enough.
+
+        </p>
+
+        <div class="birthday-badge">
+
+            ♡ 20 YEARS OF YOU ♡
+
+        </div>
+
+        <br><br>
+
+        <button
+            class="primary-btn"
+            data-target="story"
+        >
+
+            Enter our story
+
+            <span>→</span>
+
+        </button>
+
+    </div>
+
+    <div class="scroll-hint">
+
+        our story begins here
+
+        <span>↓</span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 02 — OUR STORY
+     ========================================================= -->
+
+<section id="story" class="section">
+
+    <div class="section-head reveal">
+
+        <span class="eyebrow">
+            CHAPTER ONE
+        </span>
+
+        <h2>
+            Somehow,<br>
+            <em>it became us.</em>
+        </h2>
+
+        <p>
+            A random Instagram meeting,
+            two months of vacation,
+            one reunion,
+            and then something neither of us planned.
+        </p>
+
+    </div>
+
+
+    <div class="story-path">
+
+
+        <!-- EVENT 1 -->
+
+        <article class="story-event reveal">
+
+            <div class="story-heart">
+                ♡
+            </div>
+
+            <span class="date">
+                THE BEGINNING
+            </span>
+
+            <h3>
+                A random Instagram hello.
+            </h3>
+
+            <p>
+
+                We didn't know it at the time,
+                but that random meeting on Instagram
+                was about to become one of the most
+                important little moments in our lives. and i am glad that i stalked the comment of that post.
+
+            </p>
+
+        </article>
+
+
+        <!-- EVENT 2 -->
+
+        <article class="story-event reveal">
+
+            <div class="story-heart">
+                ☾
+            </div>
+
+            <span class="date">
+                TWO MONTHS
+            </span>
+
+            <h3>
+                Then came the silence.
+            </h3>
+
+            <p>
+
+                Two months.
+
+                <br><br>
+
+                Two months of being blocked,
+                away from each other,
+                with no idea where the story would go. thought our story has been ended on feb, but god had another plan
+
+            </p>
+
+        </article>
+
+
+        <!-- EVENT 3 -->
+
+        <article class="story-event reveal">
+
+            <div class="story-heart">
+                ✦
+            </div>
+
+            <span class="date">
+                THE REUNION
+            </span>
+
+            <h3>
+                Somehow, we found our way back.
+            </h3>
+
+            <p>
+
+                And then...
+
+                <br><br>
+
+                We reunited.
+
+                We started talking again.
+
+                Maybe the story wasn't finished after all.
+
+            </p>
+
+        </article>
+
+
+        <!-- EVENT 4 -->
+
+        <article class="story-event reveal">
+
+            <div class="story-heart">
+                ♡
+            </div>
+
+            <span class="date">
+                21 APRIL 2026
+            </span>
+
+            <h3>
+                The day it became love.
+            </h3>
+
+            <p>
+
+                We talked.
+
+                We got closer.
+
+                And somewhere between all those
+                conversations and little moments,
+
+                <strong>
+                    we fell in love.
+                </strong>
+
+                <br><br>
+
+                21 April 2026.
+
+                <br>
+
+                A date I'll always remember.
+
+            </p>
+
+        </article>
+
+
+        <!-- EVENT 5 -->
+
+        <article class="story-event reveal">
+
+            <div class="story-heart">
+                ∞
+            </div>
+
+            <span class="date">
+                TODAY
+            </span>
+
+            <h3>
+                And now there's us.
+            </h3>
+
+            <p>
+
+                I don't have one favourite memory.
+
+                <br><br>
+
+                It's all the moments we've spent together.
+
+                The conversations.
+
+                The stupid little things.
+
+                The laughter.
+
+                The quiet moments.
+
+                <br><br>
+
+                All of them became my favourite memories
+                because they were with you.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 03 — PHOTO MEMORIES
+     ========================================================= -->
+
+<section id="memories" class="section">
+
+    <div class="section-head reveal">
+
+        <span class="eyebrow">
+            CHAPTER TWO
+        </span>
+
+        <h2>
+            A museum of<br>
+            <em>us.</em>
+        </h2>
+
+        <p>
+            Every photograph is another little piece
+            of our story.
+        </p>
+
+    </div>
+
+
+    <div class="photo-wall">
+
+<!-- =========================================================
+     MEMORY CHAPTERS
+     HER → US → MOMENTS
+     ========================================================= -->
+
+<div class="memory-universe">
+
+    <!-- =====================================================
+         CHAPTER 01 — HER
+         ===================================================== -->
+
+    <section class="memory-chapter her-chapter">
+
+        <div class="chapter-intro reveal">
+
+            <span class="chapter-number">01</span>
+
+            <span class="chapter-eyebrow">
+                BEFORE THERE WAS AN "US"
+            </span>
+
+            <h2>Her World</h2>
+
+            <div class="chapter-line"></div>
+
+            <p>
+                Before you became a part of my story,
+                there was simply you —
+                your smile,your pretty eyes, your little moments,
+                and a whole world I slowly fell in love with.
+            </p>
+
+            <span class="chapter-symbol">✦</span>
+
+        </div>
+
+
+        <div class="memory-grid her-grid">
+
+
+            <!-- HER 01 -->
+
+            <figure class="memory-card frame-polaroid reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her01.jpg"
+                        alt="Riya memory 01"
+                    >
+
+                    <span class="photo-number">
+                        01
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        That smile has no idea what it does to me.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 02 -->
+
+            <figure class="memory-card frame-film reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her02.jpg"
+                        alt="Riya memory 02"
+                    >
+
+                    <span class="photo-number">
+                        02
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        Somehow, you make ordinary moments beautiful.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 03 -->
+
+            <figure class="memory-card frame-lavender reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her03.jpg"
+                        alt="Riya memory 03"
+                    >
+
+                    <span class="photo-number">
+                        03
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        A little glimpse of the girl who stole my heart.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 04 -->
+
+            <figure class="memory-card frame-polaroid reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her04.jpg"
+                        alt="Riya memory 04"
+                    >
+
+                    <span class="photo-number">
+                        04
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        If pretty had a favourite picture, I'd probably choose this one.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 05 -->
+
+            <figure class="memory-card frame-film reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her05.jpg"
+                        alt="Riya memory 05"
+                    >
+
+                    <span class="photo-number">
+                        05
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        One more reason to smile whenever I see your those prettyy eyess , damnn
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 06 -->
+
+            <figure class="memory-card frame-lavender reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her06.jpg"
+                        alt="Riya memory 06"
+                    >
+
+                    <span class="photo-number">
+                        06
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        The way you worship the god just for me
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 07 -->
+
+            <figure class="memory-card frame-polaroid reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her07.jpg"
+                        alt="Riya memory 07"
+                    >
+
+                    <span class="photo-number">
+                        07
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        This is the kind of smile I could look at forever.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 08 -->
+
+            <figure class="memory-card frame-film reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her08.jpg"
+                        alt="Riya memory 08"
+                    >
+
+                    <span class="photo-number">
+                        08
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        Even your smallest version is much cutieeee
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 09 -->
+
+            <figure class="memory-card frame-lavender reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her09.jpg"
+                        alt="Riya memory 09"
+                    >
+
+                    <span class="photo-number">
+                        09
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        A tiny moment, but somehow one worth keeping.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 10 -->
+
+            <figure class="memory-card frame-polaroid reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her10.jpg"
+                        alt="Riya memory 10"
+                    >
+
+                    <span class="photo-number">
+                        10
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        You have no idea how many times see you in a day
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- HER 11 -->
+
+            <figure class="memory-card frame-film reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/her/her11.jpg"
+                        alt="Riya memory 11"
+                    >
+
+                    <span class="photo-number">
+                        11
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        And this is just one chapter of everything I love about you.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+
+        <div class="chapter-transition reveal">
+
+            <span>and then...</span>
+
+            <strong>WE HAPPENED</strong>
+
+            <span>↓</span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CHAPTER 02 — US
+         ===================================================== -->
+
+    <section class="memory-chapter us-chapter">
+
+        <div class="chapter-intro reveal">
+
+            <span class="chapter-number">02</span>
+
+            <span class="chapter-eyebrow">
+                OUR LITTLE UNIVERSE
+            </span>
+
+            <h2>Us</h2>
+
+            <div class="chapter-line"></div>
+
+            <p>
+                We met randomly on Instagram.
+                Then came two months of being apart,
+                and somehow the story brought us back to each other.
+                And then we talked...
+                and talked...
+                until talking became falling in love. we met , the best jodi you can say
+            </p>
+
+            <div class="special-date">
+                <span>21</span>
+                <small>APRIL</small>
+                <span>2026</span>
+            </div>
+
+        </div>
+
+
+        <div class="memory-grid us-grid">
+
+
+            <!-- US 01 -->
+
+            <figure class="memory-card frame-love reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us01.jpg"
+                        alt="Our memory 01"
+                    >
+
+                    <span class="photo-number">
+                        01
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        You're hiding your face tho i can see you well, cause my mind have already image of you
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- US 02 -->
+
+            <figure class="memory-card frame-love reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us02.jpg"
+                        alt="Our memory 02"
+                    >
+
+                    <span class="photo-number">
+                        02
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        our silly habit of capture whatever we like
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- US 03 -->
+
+            <figure class="memory-card frame-love reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us03.jpg"
+                        alt="Our memory 03"
+                    >
+
+                    <span class="photo-number">
+                        03
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        Two people, one moment I never want to forget.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- US 04 -->
+
+            <figure class="memory-card frame-love reveal featured-memory">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us04.jpg"
+                        alt="Our memory 04"
+                    >
+
+                    <span class="photo-number">
+                        04
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♥</span>
+
+                    <span class="caption-text">
+                        This one will always have a special place in my heart.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- US 05 -->
+
+            <figure class="memory-card frame-love reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us05.jpg"
+                        alt="Our memory 05"
+                    >
+
+                    <span class="photo-number">
+                        05
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        Just us, being us.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- US 06 -->
+
+            <figure class="memory-card frame-love reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us06.jpg"
+                        alt="Our memory 06"
+                    >
+
+                    <span class="photo-number">
+                        06
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        If I could save a feeling inside a picture,it would be this , see how relaxed i am
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- US 07 -->
+
+            <figure class="memory-card frame-love reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/us/us07.jpg"
+                        alt="Our memory 07"
+                    >
+
+                    <span class="photo-number">
+                        07
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♥</span>
+
+                    <span class="caption-text">
+                        The story is better because you're in it.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+
+        <div class="chapter-transition reveal">
+
+            <span>but our story isn't only about pictures...</span>
+
+            <strong>
+                IT'S ABOUT THE MOMENTS
+            </strong>
+
+            <span>↓</span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CHAPTER 03 — MOMENTS
+         ===================================================== -->
+
+    <section class="memory-chapter moments-chapter">
+
+        <div class="chapter-intro reveal">
+
+            <span class="chapter-number">03</span>
+
+            <span class="chapter-eyebrow">
+                LITTLE THINGS I REMEMBER
+            </span>
+
+            <h2>Moments</h2>
+
+            <div class="chapter-line"></div>
+
+            <p>
+                Some memories don't need a perfect picture.
+                Sometimes it's a road,
+                a message,
+                a place,
+                a random screenshot,
+                or something that simply reminds me of you.
+            </p>
+
+            <span class="chapter-symbol">
+                ✦ ✿ ✦
+            </span>
+
+        </div>
+
+
+        <div class="memory-grid moments-grid">
+
+
+            <!-- MOMENT 01 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment01.jpg"
+                        alt="Memory moment 01"
+                    >
+
+                    <span class="photo-number">
+                        M01
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        Some memories feel like handwritten letters.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 02 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment02.jpg"
+                        alt="Memory moment 02"
+                    >
+
+                    <span class="photo-number">
+                        M02
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        Even ordinary places become special when they remind me of you.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 03 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment03.jpg"
+                        alt="Memory moment 03"
+                    >
+
+                    <span class="photo-number">
+                        M03
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        A random little place that somehow became part of our story.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 04 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment04.jpg"
+                        alt="Memory moment 04"
+                    >
+
+                    <span class="photo-number">
+                        M04
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        The kind of memory that quietly stays.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 05 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment05.jpg"
+                        alt="Memory moment 05"
+                    >
+
+                    <span class="photo-number">
+                        M05
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        I don't need a reason to keep this one.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 06 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment06.jpg"
+                        alt="Memory moment 06"
+                    >
+
+                    <span class="photo-number">
+                        M06
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        How can i forgot 1200 ko 13% Vat
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 07 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment07.jpg"
+                        alt="Memory moment 07"
+                    >
+
+                    <span class="photo-number">
+                        M07
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        Some screenshots hold more feelings than photographs ever could.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 08 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment08.jpg"
+                        alt="Memory moment 08"
+                    >
+
+                    <span class="photo-number">
+                        M08
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♡</span>
+
+                    <span class="caption-text">
+                        A day u called me first time babee, hayeee
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 09 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment09.jpg"
+                        alt="Memory moment 09"
+                    >
+
+                    <span class="photo-number">
+                        M09
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✿</span>
+
+                    <span class="caption-text">
+                        that almost ending of our unstarted relationship
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 10 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment10.jpg"
+                        alt="Memory moment 10"
+                    >
+
+                    <span class="photo-number">
+                        M10
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">✦</span>
+
+                    <span class="caption-text">
+                        yet we decided to being friends, but somehow see us!! i am not bengali tho 
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+
+            <!-- MOMENT 11 -->
+
+            <figure class="memory-card frame-diary reveal">
+
+                <div class="memory-photo">
+
+                    <img
+                        src="assets/photos/moments/moment11.jpg"
+                        alt="Memory moment 11"
+                    >
+
+                    <span class="photo-number">
+                        M11
+                    </span>
+
+                </div>
+
+                <figcaption>
+
+                    <span class="caption-symbol">♥</span>
+
+                    <span class="caption-text">
+                        And somehow, every little memory leads me back to you.
+                    </span>
+
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+
+        <div class="memory-ending reveal">
+
+            <span class="ending-flower">✿</span>
+
+            <p>
+                29 photographs.
+                Countless memories.
+                One girl.
+            </p>
+
+            <h3>
+                RIYA.
+            </h3>
+
+            <span class="ending-line">
+                and I wouldn't change a single chapter.
+            </span>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- =========================================================
+     PAGE 04 — HER WORLD
+     ========================================================= -->
+
+<section id="favorites" class="section">
+
+    <div class="section-head reveal">
+
+        <span class="eyebrow">
+            CHAPTER THREE
+        </span>
+
+        <h2>
+            Little things<br>
+            <em>that are you.</em>
+        </h2>
+
+        <p>
+            A tiny collection of Riya's favourite things.
+        </p>
+
+    </div>
+
+
+    <div class="favourite-world">
+
+    <article class="favourite reveal">
+        <div class="favourite-icon">💜</div>
+        <h3>Lavender</h3>
+        <small>her favourite colour · soft like her</small>
+    </article>
+
+    <article class="favourite reveal">
+        <div class="favourite-icon">🌸</div>
+        <h3>Jasmine</h3>
+        <small>her favourite flower · little things she loves</small>
+    </article>
+
+    <article class="favourite reveal">
+        <div class="favourite-icon">🐈</div>
+        <h3>Cats</h3>
+        <small>her favourite pet · because they're adorable</small>
+    </article>
+
+    <article class="favourite reveal">
+        <div class="favourite-icon"></div>
+        <h3>Kuromi</h3>
+        <small>her favourite character · cute but chaotic</small>
+    </article>
+
+    <article class="favourite reveal">
+        <div class="favourite-icon">🎬</div>
+        <h3>Sanam Teri Kasam</h3>
+        <small>her favourite movie · one of her comfort stories</small>
+    </article>
+
+    <article class="favourite reveal">
+        <div class="favourite-icon">🎵</div>
+        <h3>Paaro</h3>
+        <small>Aditya Rikhari · a song that feels like her</small>
+    </article>
+
+</div>
+
+
+    <p class="secret-note reveal">
+
+        And yes...
+
+        I remembered all of them.
+
+        ♡
+
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 05 — LETTER
+     ========================================================= -->
+
+<section id="letter" class="section letter-section">
+
+    <div class="section-head reveal">
+
+        <span class="eyebrow">
+            CHAPTER FOUR
+        </span>
+
+        <h2>
+            Something I<br>
+            <em>wanted to say.</em>
+        </h2>
+
+        <p>
+            Some things are easier to write
+            than to say.
+        </p>
+
+    </div>
+
+
+    <div class="letter-book reveal">
+
+
+        <div class="paper-cover">
+
+            <span>
+                FOR
+            </span>
+
+            <strong>
+                RIYA
+            </strong>
+
+            <small>
+                open gently ♡
+            </small>
+
+            <button
+                id="openLetter"
+                class="primary-btn"
+            >
+                Open my letter
+            </button>
+
+        </div>
+
+
+        <div class="paper">
+
+            <div class="paper-lines">
+
+                <p class="date">
+                    14 August 2026
+                </p>
+
+                <h3>
+                    To my Bachaa,
+                </h3>
+
+                <p>
+
+                    It's funny how one random meeting
+                    on Instagram could eventually become
+                    something this important to me.
+
+                </p>
+
+                <p>
+
+                    We had our two months of silence,
+                    and somehow we still found our way
+                    back to each other.
+
+                </p>
+
+                <p>
+
+                    Then we started talking again.
+
+                    And slowly, without even realizing
+                    exactly when it happened,
+                    talking to you became something
+                    I looked forward to every day.
+
+                </p>
+
+                <p>
+
+                    And then came
+                    <strong>21 April 2026.</strong>
+
+                    The day I knew that what we had
+                    wasn't just random anymore.
+
+                </p>
+
+                <p>
+
+                    I don't have one favourite memory
+                    of us.
+
+                    I think my favourite memory is simply
+                    every moment I've spent with you.
+
+                </p>
+
+                <p>
+
+                    Happy birthday, Riya.
+
+                    I hope you always remember how
+                    special you are.
+
+                </p>
+
+                <p>
+
+                    And whenever you forget...
+
+                    come back to this little universe.
+
+                </p>
+
+                <p class="signature">
+
+                    Always,
+
+                    <br>
+
+                    Your person ♡
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 06 — PRIVATE VIDEO
+     ========================================================= -->
+
+<section id="video" class="section">
+
+    <div class="section-head reveal">
+
+        <span class="eyebrow">
+            CHAPTER FIVE
+        </span>
+
+        <h2>
+            Just for<br>
+            <em>you.</em>
+        </h2>
+
+        <p>
+            One little thing I made only for you.
+        </p>
+
+    </div>
+
+
+    <div class="private-box reveal">
+
+        <video
+            controls
+            playsinline
+            preload="metadata"
+        >
+
+            <source
+                src="assets/video/private-video.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support video.
+
+        </video>
+
+    </div>
+
+
+    <p class="secret-note reveal">
+
+        🎥
+
+        This moment belongs here because
+        some memories deserve their own page.
+
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 07 — FINAL WISH
+     ========================================================= -->
+
+<section id="finale" class="section finale-section">
+
+    <div class="moon"></div>
+
+    <div class="finale-content reveal">
+
+        <span class="eyebrow">
+            THE LAST PAGE
+        </span>
+
+        <h2>
+
+            Make a wish.
+
+            <br>
+
+            <em>
+                I'll keep the stars.
+            </em>
+
+        </h2>
+
+        <p>
+            Tap the star when you're ready.
+        </p>
+
+
+        <button
+            id="wishBtn"
+            class="wish-star"
+            aria-label="Make a wish"
+        >
+            ✦
+        </button>
+
+
+        <div
+            id="finalMessage"
+            class="final-message"
+        >
+
+            <span>
+                14 · 08 · 2026
+            </span>
+
+            <h3>
+                Happy Birthday, Bachaa.
+            </h3>
+
+            <p>
+
+                May your life always have
+                lavender sunsets,
+
+                jasmine flowers,
+
+                songs that make you smile,
+
+                little paws running around,
+
+                and a thousand reasons
+                to be happy.
+
+                <br><br>
+
+                And if I get lucky...
+
+                maybe I'll be there
+                for some of those moments too.
+
+            </p>
+
+            <strong>
+                ♡
+            </strong>
+
+        </div>
+
+    </div>
+
+<!-- =========================================================
+     FINAL PERSONAL MESSAGE — VOICE RECORDING
+     ========================================================= -->
+
+<div class="voice-message reveal">
+
+    <span class="eyebrow">ONE LAST THING</span>
+
+    <h3>A little something<br><em>from me to you.</em></h3>
+
+    <p>
+        Before you leave this little universe...
+        listen to this.
+    </p>
+
+    <div class="voice-player">
+
+        <div class="voice-icon">🎙️</div>
+
+        <div class="voice-info">
+            <strong>A birthday message for you ♡</strong>
+            <small>Press play when you're ready.</small>
+        </div>
+<button id="voicePlayBtn" class="voice-play-btn">
+    ▶ Play
+</button>
+<audio id="birthdayVoice" preload="metadata">
+    <source src="audio/birthday-message.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+</audio>
+
+    </div>
+
+    <p class="voice-ending">
+        Some things are better heard than written. ♡
+    </p>
+
+</div>
+    <div id="fireworks"></div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="script.js"></script>
+</body>
+</html>
